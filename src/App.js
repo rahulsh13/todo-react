@@ -3,14 +3,19 @@ import './App.css';
 import Header from './Mycomponents/Header'
 import { Todos } from "./Mycomponents/Todos";
 import { Footer } from "./Mycomponents/Footer";
+import React, { useState } from 'react';
 
 function App() {
 
-  const onDelete = () => {
-    console.log("Clicked on onDelete")
+  const onDelete = (todo) => {
+    console.log("Clicked on onDelete,  ", todo)
+
+    setTodos(todos.filter((e) => {
+      return e!==todo;
+    }));
   }
 
-  let todos = [
+  const [todos, setTodos] = useState([
     {
       sno: 1,
       title: "Eat Dinner",
@@ -26,7 +31,7 @@ function App() {
       title: "wakeup early",
       description: "wake up early tomorrow."
     }
-  ]
+  ]);
   return (
     <>
       <Header title = "My Todos List" name = "Rahul" searchbar = {false}/>
